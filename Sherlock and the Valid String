@@ -1,0 +1,41 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+from collections import Counter
+# Complete the isValid function below.
+def isValid(s):
+    if s=='':
+        return 'NO'
+    s1=Counter(s)
+    temp=list(s1.values())
+    count=0
+    if len(temp)==1:
+        return 'YES'
+    for i in range(len(temp)-1):
+        if temp[i]!=temp[i+1]:
+            if temp[i]+1==temp[i+1] or temp[i]-1==temp[i+1]:
+                count+=1
+                temp[i+1]=temp[i]
+            if count>1:
+                return 'NO'
+    res = all(ele == temp[0] for ele in temp)
+    if ((sum(temp)-1)/(len(temp)-1))==float(max(temp)):
+        return 'YES'
+    if res:
+        return 'YES'
+    return 'NO'
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = isValid(s)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
