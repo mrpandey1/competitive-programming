@@ -1,0 +1,41 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+import bisect
+# Complete the activityNotifications function below.
+import bisect
+def get_median(l, d, middle):
+    if d % 2 == 0:
+        return sum(l[middle - 1:middle + 1]) / 2
+    else :
+        return l[middle]
+def activityNotifications(expenditure, d):
+    res = 0
+    middle = int(d / 2)
+    sorted_deq = sorted(expenditure[:d])
+    for i in range(d, len(expenditure)):
+        if (2 * get_median(sorted_deq, d, middle) <= expenditure[i]):
+            res += 1
+        del sorted_deq[bisect.bisect_left(sorted_deq, expenditure[i - d])]
+        bisect.insort(sorted_deq, expenditure[i])
+    return res 
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    nd = input().split()
+
+    n = int(nd[0])
+
+    d = int(nd[1])
+
+    expenditure = list(map(int, input().rstrip().split()))
+
+    result = activityNotifications(expenditure, d)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
