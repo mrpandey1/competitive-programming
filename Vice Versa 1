@@ -1,0 +1,8 @@
+def ans(a):
+    a="{:032b}".format(a)
+    temp={
+        '0':'1',
+        '1':'0'
+        }
+    return int(''.join(temp[x] for x in a),2)
+print(ans(0))
