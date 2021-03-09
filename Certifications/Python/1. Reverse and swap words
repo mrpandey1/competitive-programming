@@ -1,0 +1,15 @@
+def solution(a):
+  a=a.split(' ')[::-1]
+  ans=''
+  for i in a:
+    for j in i:
+      if j.isupper():
+        ans+=j.lower()
+      elif j.islower():
+        ans+=j.upper()
+      else:
+        ans+=j
+    ans+=' '
+  return ans
+new=solution('My name iS nisHant')
+print(new)
