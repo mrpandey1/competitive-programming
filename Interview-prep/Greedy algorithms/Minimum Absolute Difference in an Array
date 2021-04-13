@@ -1,0 +1,14 @@
+'''
+
+-59 -36 -13 1 -53 -92 -2 -96 -54 75
+
+
+'''
+
+temp=input()
+a=[int(i) for i in input().split(' ')]
+a.sort()
+ans=abs(a[0]-a[1])
+for i in range(2,len(a)):
+    ans=min(ans,abs(a[i]-a[i-1]))
+print(ans)
