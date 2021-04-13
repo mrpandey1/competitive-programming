@@ -1,3 +1,8 @@
+'''
+using pypy3
+'''
+
+
 ans=0
 def merge(a,low,mid,high):
     global ans
