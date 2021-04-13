@@ -1,0 +1,33 @@
+ans=0
+def merge(a,low,mid,high):
+    global ans
+    i=low
+    j=mid+1
+    temp=[]
+    while i<=mid and j<=high:
+        if a[i]<=a[j]:
+            temp.append(a[i])
+            i+=1
+        else:
+            temp.append(a[j])
+            ans+=(mid-i+1)
+            j+=1
+    while i<=mid:
+        temp.append(a[i])
+        i+=1
+    while j<=high:
+        temp.append(a[j])
+        j+=1
+    a[low:high+1]=temp
+def mergeSort(a,low,high):
+    if low<high:
+        mid=low+(high-low)//2
+        mergeSort(a,low,mid)
+        mergeSort(a,mid+1,high)
+        merge(a,low,mid,high)
+for i in range(int(input())):
+    n=int(input())
+    arr=[int(i) for i in input().split(' ')]
+    mergeSort(arr,0,n-1)
+    print(ans)
+    ans=0
