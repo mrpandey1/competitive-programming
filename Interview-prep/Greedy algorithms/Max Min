@@ -1,0 +1,16 @@
+n=int(input())
+k=int(input())
+arr=[]
+ans=float('inf')
+for i in range(n):
+    arr.append(int(input()))
+arr.sort()
+for i in range(len(arr)-k+1):
+    ans=min(ans,(arr[i+k-1]-arr[i]))
+print(ans)
+'''
+[822, 1520, 1784, 2422, 2822, 3142,
+3902, 4094, 4157, 4504, 5413, 5629,
+5857, 6643, 7232, 7288, 7802, 8245,
+9739, 9948]
+'''
