@@ -1,0 +1,16 @@
+n,p=input().split(' ')
+n,p=int(n),int(p)
+prices=[int(i) for i in input().split(' ')]
+prices.sort(reverse=True)
+cust=0
+ans=0
+till=len(prices)%p
+
+for i in range(0,len(prices)-till,p):
+    for j in prices[i:i+p]:
+        ans+=((1+cust)*j)
+    cust+=1
+for k in prices[len(prices)-till:]:
+    ans+=((1+cust)*k)
+print(ans)
+
