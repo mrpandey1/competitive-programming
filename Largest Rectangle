@@ -1,0 +1,41 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the largestRectangle function below.
+def largestRectangle(a):
+    maxi=0
+    for i in range(len(a)):
+        count=0
+        for j in range(i,-1,-1):
+            if a[j]>=a[i]:
+                count+=1
+            else:
+                break
+        for k in range(i+1,len(a)):
+            if a[k]>=a[i]:
+                count+=1
+            else:
+                break
+        area=a[i]*count
+        if maxi<area:
+            maxi=area
+    return maxi
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    h = list(map(int, input().rstrip().split()))
+
+    result = largestRectangle(h)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()

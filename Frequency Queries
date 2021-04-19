@@ -1,0 +1,19 @@
+def frequency(queries):
+    a=defaultdict(lambda:0)
+    b=defaultdict(lambda:0)
+    ans=[]
+    for i,j in queries:
+        if i==1:
+            b[a[j]]=max(0,b[a[j]]-1)
+            a[j]+=1
+            b[a[j]]+=1
+        elif i==2:
+            b[a[j]]=max(0,b[a[j]]-1)
+            a[j]= max(0, a[j] - 1)
+            if a[j] > 0:
+                b[a[j]] += 1
+        else:
+            if f[key] > 0:
+                output.append(1)
+            else:
+                output.append(0)

@@ -1,0 +1,13 @@
+inputs=int(input())
+for i in range(inputs):
+    num=int(input())
+    first=list(map(int,input().strip().split()))[:num]
+    second=list(map(int,input().strip().split()))[:num]
+    
+    val_f=max(first)
+    val_s=max(second)
+    
+    if(val_f > val_s or val_s >val_f):
+        print("YES")
+    else:
+        print("NO")

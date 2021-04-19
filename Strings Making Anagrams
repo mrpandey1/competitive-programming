@@ -1,0 +1,30 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the makeAnagram function below.
+from  collections import Counter
+def makeAnagram(a, b):
+    c1 = Counter(a) 
+    c2 = Counter(b) 
+    common = c1&c2
+    value = 0
+    for key in common: 
+        value +=common[key] 
+    return (len(a)+len(b))-2*value 
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    a = input()
+
+    b = input()
+
+    res = makeAnagram(a, b)
+
+    fptr.write(str(res) + '\n')
+
+    fptr.close()

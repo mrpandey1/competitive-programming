@@ -1,0 +1,18 @@
+def solve(a,b,c,d):
+    temp1=a
+    temp2=c
+    if d>=b and a<c:
+        print('NO')
+        return
+    while temp1<temp2:
+        temp1+=b
+        temp2+=d
+    if temp1==temp2:
+        print('YES')
+        return
+    print('No')
+    return
+    
+a,b,c,d=input().split()
+a,b,c,d=int(a),int(b),int(c),int(d)
+solve(a,b,c,d)

@@ -1,0 +1,17 @@
+def ans2(a):
+    ans=[]
+    temp=str(a)
+    b=10**(len(temp)-1)
+    for i in temp:
+        temp1=int(i)*b
+        if temp1!=0:
+            ans.append(temp1)
+        b=int(b/10)
+    print(len(ans))
+    for i in ans:
+        print(i,end=' ')
+    print()
+q=int(input())
+for i in range(q):
+    c = int(input())
+    ans2(c)

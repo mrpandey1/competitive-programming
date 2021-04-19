@@ -1,0 +1,16 @@
+def sol(n,size):
+  arr=[0 for i in range(n+1)]
+  for i in range(size):
+    a,b,k=input().split()
+    a,b,k=int(a),int(b),int(k)
+    arr[a-1]+=k
+    arr[b]-=k
+  curr_sum=0
+  ans=0
+  for i in arr:
+    curr_sum+=i
+    ans=max(ans,curr_sum)
+  return ans
+n,size=input().split(' ')
+n,size=int(n),int(size)
+print(sol(n,size))

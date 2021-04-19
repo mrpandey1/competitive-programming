@@ -1,0 +1,14 @@
+def solve(n,arr):
+    maxi=mini=arr[0]
+    ans=ans2=0
+    for i in arr[1:]:
+        if i<mini:
+            ans2+=1
+            mini=i
+        if i>maxi:
+            ans+=1
+            maxi=i
+    return (ans,ans2)
+a=int(input())
+arr=[int(i) for i in input().split(' ')]
+print(solve(a,arr))

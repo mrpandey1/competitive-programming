@@ -1,0 +1,36 @@
+import bisect
+n,size=input().split(' ')
+n,size=int(n),int(size)
+a=[int(i) for i in input().split(' ')]
+def get_median(l, d, middle):
+    if d % 2 == 0:
+        return sum(l[middle - 1:middle + 1]) / 2
+    else :
+        return l[middle]
+def solve(expenditure, d):
+    res = 0
+    middle = int(d / 2)
+    sorted_deq = sorted(expenditure[:d])
+    for i in range(d, len(expenditure)):
+        # print
+        # print(get_median(sorted_deq, d, middle))
+        if (2 * get_median(sorted_deq, d, middle) <= expenditure[i]):
+            res += 1
+        del sorted_deq[bisect.bisect_left(sorted_deq, expenditure[i - d])]
+        bisect.insort(sorted_deq, expenditure[i])
+    return res
+print(solve(a,size))
+
+
+
+'''
+
+[2,3,4,3,2] [2,2,3,3,4]
+[3,4,2,3,6] [2,3,3,4,6]
+[4,2,3,6,8] [2,3,4,6,8]
+[2,3,6,8,4] [2,3,4,6,8]
+
+
+'''
+    
+    

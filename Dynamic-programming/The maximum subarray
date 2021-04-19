@@ -1,0 +1,39 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the maxSubarray function below.
+def maxSubarray(a):
+        ans=helper(a)
+        ans2=helper(sorted(a))
+        return [ans,ans2]
+def helper(a):
+    ans=maxi=a[0]
+    for i in a[1:]:
+        if i>i+maxi:
+            maxi=i
+        else:
+            maxi=i+maxi
+        ans=max(maxi,ans)
+    return ans
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    t = int(input())
+
+    for t_itr in range(t):
+        n = int(input())
+
+        arr = list(map(int, input().rstrip().split()))
+
+        result = maxSubarray(arr)
+
+        fptr.write(' '.join(map(str, result)))
+        fptr.write('\n')
+
+    fptr.close()

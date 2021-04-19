@@ -1,0 +1,22 @@
+def ans(a):
+    ans=[]
+    dict={
+        '}':'{',']':'[',')':'('
+        }
+    new='NO'
+    for i in a:
+        if i in dict.values():
+            ans.append(i)
+        else:
+            if len(ans)==0:
+                return 'NO'
+            else:
+                b=ans.pop()
+            if b==dict[i]:
+                new='YES'
+            else:
+                return 'NO'
+    if len(ans)==0:
+        return new
+    return 'NO'
+print(ans('[[[[]))'))

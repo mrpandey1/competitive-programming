@@ -1,0 +1,28 @@
+if __name__ == '__main__':
+    ans=[]
+    for i in range(int(input())):
+        a=input().split(' ')
+        if a[0]=='insert':
+            ans.insert(int(a[1]),int(a[2]))
+        if a[0]=='print':
+            print(ans)
+        if a[0]=='remove':
+            ans.remove(int(a[1]))
+        if a[0]=='append':
+            ans.append(int(a[1]))
+        if a[0]=='sort':
+            ans.sort()
+        if a[0]=='pop':
+            ans.pop(-1)
+        if a[0]=='reverse':
+            ans.reverse()
+    
+    
+    
+# insert i e: Insert integer  at position .
+# print: Print the list.
+# remove e: Delete the first occurrence of integer .
+# append e: Insert integer  at the end of the list.
+# sort: Sort the list.
+# pop: Pop the last element from the list.
+# reverse: Reverse the list

@@ -1,0 +1,23 @@
+
+n,k=input().split(' ')
+n,k=int(n),int(k)
+contests=[]
+for i in range(n):
+    temp=[int(i) for i in input().split(' ')]
+    contests.append(temp)
+temp=[]
+ans=0
+for i in contests:
+    if i[1]==0:
+        ans+=i[0]
+    else:
+        temp.append(i[0])
+temp=sorted(temp,reverse=True)
+count=len(temp)-(len(temp)-k)
+for i in range(len(temp)):
+    if i<count:
+        ans+=temp[i]
+    else:
+        ans-=temp[i]
+
+print(ans)

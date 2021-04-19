@@ -1,0 +1,12 @@
+def solve(n,arr,day,mon):
+    ans=0
+    for i in range(0,n):
+        if sum(arr[i:i+mon])==day:
+            ans+=1
+    return ans
+    
+a=int(input())
+arr=[int(i) for i in input().split(' ')]
+day,mon=input().split(' ')
+day,mon=int(day),int(mon)
+print(solve(a,arr,day,mon))

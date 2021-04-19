@@ -1,0 +1,13 @@
+def solve(n,arr):
+    maxi=-101
+    ans=-101
+    for i in arr:
+        maxi=max(maxi,i)
+    for i in arr:
+        if i!=maxi:
+            ans=max(ans,i)
+    return ans
+if __name__ == '__main__':
+    n = int(input())
+    arr = list(map(int, input().split()))
+    print(solve(n,arr))

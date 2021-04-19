@@ -1,0 +1,13 @@
+def countPrimes(n):
+        c = 0
+        check = [0]*n
+        i=2
+        ans=[]
+        while i < n:
+                if check[i]==0:
+                    c+=1
+                    for j in range(i,n,i):
+                        check[j]=1
+                        ans.append(i)
+                i+=1
+        return sum(list(set(ans)))
