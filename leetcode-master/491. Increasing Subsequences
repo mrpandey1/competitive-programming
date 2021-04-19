@@ -1,0 +1,9 @@
+class Solution:
+    def findSubsequences(self, nums: List[int]) -> List[List[int]]:
+        dp = [[(nums[i],)] for i in range(len(nums))]
+        for i in range(1,len(nums)):
+            for j in range(i):
+                if nums[j]<=nums[i]:
+                    for a in dp[j]:
+                        dp[i].append(a+(nums[i],))
+        return list(set((t for ta in dp for t in ta if len(t)>1)))

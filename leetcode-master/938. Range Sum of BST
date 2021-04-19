@@ -1,0 +1,14 @@
+class Solution:
+    def rangeSumBST(self, root: TreeNode, low: int, high: int) -> int:
+        total=0
+        def helper(root,low,high):
+            nonlocal total
+            if root:
+                if root.val>=low and root.val<=high:
+                    total+=root.val
+                if root.left and root.val>=low:
+                    helper(root.left,low,high)
+                if root.right and root.val<=high:
+                    helper(root.right,low,high)
+        helper(root,low,high)
+        return total

@@ -1,0 +1,16 @@
+class Solution:
+    def decrypt(self, code: List[int], k: int) -> List[int]:
+        n=len(code)
+        if k==0:
+            return [0 for i in range(n)]
+        ans=[]
+        sign=1
+        if k<0:
+            sign=-1
+        for i in range(n):
+            temp=i+1
+            sumi=0
+            for _ in range(sign,k+sign,sign):
+                sumi+=code[(i+_)%n]
+            ans.append(sumi)
+        return ans

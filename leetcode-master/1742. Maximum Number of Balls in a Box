@@ -1,0 +1,16 @@
+class Solution:
+    def countBalls(self, lowLimit: int, highLimit: int) -> int:
+        temp={}
+        for i in range(0,46):
+            temp[i]=0
+        def helper(i):
+            a=0
+            for i in str(i):
+                a+=int(i)
+            return a
+        ans=0
+        for i in range(lowLimit,highLimit+1):
+            sum_of_digits=helper(i)
+            temp[sum_of_digits]+=1
+            ans=max(ans,temp[sum_of_digits])
+        return ans

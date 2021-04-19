@@ -1,0 +1,13 @@
+class Solution:
+    def diagonalSum(self, mat: List[List[int]]) -> int:
+        ans=0
+        n=len(mat)
+        if n%2==1:
+            ans-=mat[n//2][n//2]
+        for i in range(0,n):
+            ans+=mat[i][i]
+        k=0
+        for i in range(n-1,-1,-1):
+            ans+=mat[k][i]
+            k+=1
+        return ans

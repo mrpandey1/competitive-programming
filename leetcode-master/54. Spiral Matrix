@@ -1,0 +1,47 @@
+class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        spiral = []
+        try:
+            while True:
+                spiral+=matrix.pop(0)
+                for i in range(len(matrix)):
+                    spiral.append(matrix[i].pop(-1))
+                spiral+=(matrix.pop(-1)[::-1])
+                for i in range(len(matrix)):
+                    spiral.append(matrix[len(matrix) - 1 - i].pop(0))
+        except:
+            pass
+        return spiral
+ or
+ 
+ class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        ans=[]
+        if len(matrix)==0:
+            return ans
+        rowBegin=0
+        rowEnd=len(matrix)-1
+        colBegin=0
+        colEnd=len(matrix[0])-1
+        while rowBegin<=rowEnd and colBegin<=colEnd:
+            for i in range(colBegin,colEnd+1):
+                ans.append(matrix[rowBegin][i])
+            rowBegin+=1
+            for i in range(rowBegin,rowEnd+1):
+                ans.append(matrix[i][colEnd])
+            colEnd-=1
+            if rowBegin<=rowEnd:
+                for i in range(colEnd,colBegin-1,-1):
+                    ans.append(matrix[rowEnd][i])
+            rowEnd-=1
+            if colBegin<=colEnd:
+                for i in range(rowEnd,rowBegin-1,-1):
+                    ans.append(matrix[i][colBegin])
+            colBegin+=1
+        return ans 
+            
+            
+            
+            
+            
+            

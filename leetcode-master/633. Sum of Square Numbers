@@ -1,0 +1,16 @@
+class Solution:
+    def judgeSquareSum(self, c: int) -> bool:
+        if c==1:
+            return True
+        if int(c**(1/2))**2==c:
+            return True
+        i=0
+        j=int(c**(1/2))
+        while i<=j:
+            if i*i+j*j==c:
+                return True
+            if i*i+j*j<c:
+                i+=1
+            else:
+                j-=1
+        return False

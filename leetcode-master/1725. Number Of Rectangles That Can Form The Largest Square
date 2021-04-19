@@ -1,0 +1,13 @@
+class Solution:
+    def countGoodRectangles(self, rectangles: List[List[int]]) -> int:
+        ans={}
+        maxi=-1
+        for i,j in rectangles:
+            to_append=min(i,j)
+            maxi=max(maxi,to_append)
+            try:
+                if ans[to_append]!=None:
+                    ans[to_append]+=1
+            except:
+                ans[to_append]=1
+        return ans[maxi]

@@ -1,0 +1,21 @@
+class Solution:
+    def daysBetweenDates(self, date1: str, date2: str) -> int:
+        def days(year,month,day):
+            def leapyear(year):
+                if not year%400: return 1
+                if not year%100: return 0
+                if not year%4: return 1
+                return 0
+            dayofmonth=[31,28,31,30,31,30,31,31,30,31,30,31]
+            num = 0
+            for i in range(1971,year):
+                num+=365
+                num+=leapyear(i)
+            dayofmonth[1]+=leapyear(year)
+            for i in range(0,month-1):
+                num+=dayofmonth[i]
+            num += day - 1;
+            return num
+        y1,m1,d1 = [int(i) for i in date1.split('-')]  
+        y2,m2,d2 = [int(i) for i in date2.split('-')]  
+        return abs(days(y1,m1,d1)-days(y2,m2,d2))

@@ -1,0 +1,40 @@
+class Solution:
+    def findMedianSortedArrays(self, a: List[int], b: List[int]) -> float:
+       
+        def getMax(nums,partition):
+            if partition==0:
+                return float('-inf')
+            else:
+                return nums[partition-1]
+        def getMin(nums,partition):
+            if partition==len(nums):
+                return float('inf')
+            else:
+                return nums[partition]
+    
+        if len(a)>len(b):
+            a,b=b,a
+        lo=0
+        hi=len(a)
+        combinedLength=len(a)+len(b)
+        while lo<=hi:
+            partX=int((lo+hi)/2)
+            partY=int((combinedLength+1)/2-partX)
+            
+            leftX=getMax(a,partX)
+            rightX=getMin(a,partX)
+            
+            leftY=getMax(b,partY)
+            rightY=getMin(b,partY)
+            
+            if leftX<=rightY and leftY<=rightX:
+                if combinedLength%2==0:
+                    return (max(leftX,leftY)+min(rightX,rightY))/2.0
+                else:
+                    return max(leftY,leftX)
+            
+            if leftX>rightY:
+                hi=partX-1
+            else:
+                lo=partX+1
+        

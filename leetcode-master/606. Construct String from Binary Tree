@@ -1,0 +1,27 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def tree2str(self, t: TreeNode) -> str:
+        ans=''
+        if not t:
+            return ''
+        def dfs(node):
+            nonlocal ans
+            if node:
+                ans+=str(node.val)
+            if node.right and not node.left:
+                ans+='()'
+            if node.left:
+                ans+='('
+                dfs(node.left)
+                ans+=')'
+            if node.right:
+                ans+='('
+                dfs(node.right)
+                ans+=')'
+        dfs(t)
+        return ans

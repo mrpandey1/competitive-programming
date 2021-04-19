@@ -1,0 +1,12 @@
+class Solution:
+    def interpret(self, command: str) -> str:
+        ans=''
+        for j,i in enumerate(command):
+            if i=='G':
+                ans+='G'
+            elif i=='(':
+                if command[j+1]==')':
+                    ans+='o'
+                else:
+                    ans+='al'
+        return ans

@@ -1,0 +1,16 @@
+class Solution:
+    def halvesAreAlike(self, s: str) -> bool:
+        one=0
+        i=0
+        j=len(s)//2
+        temp=set('aeiouAEIOU')
+        while j<len(s):
+            if s[i] in temp:
+                one+=1
+            if s[j] in temp:
+                one-=1
+            j+=1
+            i+=1
+        return one==0
+            
+                    

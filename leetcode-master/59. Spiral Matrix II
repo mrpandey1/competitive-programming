@@ -1,0 +1,27 @@
+class Solution:
+    def generateMatrix(self, n: int) -> List[List[int]]:
+        ans=[[0 for _ in range(n)] for i in range(n)]
+        rowStart,colStart=0,0
+        rowEnd=len(ans)-1
+        colEnd=len(ans[0])-1
+        count=1
+        while rowStart<=rowEnd and colStart<=colEnd:
+            for i in range(colStart,colEnd+1):
+                ans[rowStart][i]=count
+                count+=1
+            rowStart+=1
+            for i in range(rowStart,rowEnd+1):
+                ans[i][colEnd]=count
+                count+=1
+            colEnd-=1
+            if rowStart<=rowEnd:
+                for i in range(colEnd,colStart-1,-1):
+                    ans[rowEnd][i]=count
+                    count+=1
+            rowEnd-=1
+            if colStart<=colEnd:
+                for i in range(rowEnd,rowStart-1,-1):
+                    ans[i][colStart]=count
+                    count+=1
+            colStart+=1
+        return ans

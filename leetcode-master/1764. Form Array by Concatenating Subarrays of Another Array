@@ -1,0 +1,11 @@
+class Solution:
+    def canChoose(self, groups: List[List[int]], nums: List[int]) -> bool:
+        start=0
+        for i in groups:
+            for k in range(start,len(nums)):
+                if nums[k:k+len(i)]==i:
+                    start=k+len(i)
+                    break
+            else:
+                return False
+        return True

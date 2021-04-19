@@ -1,0 +1,38 @@
+class Solution:
+    def longestNiceSubstring(self, s: str) -> str:
+        def valid(nums):
+            nums=set(nums)
+            if len(nums)%2==1:
+                return False
+            for i in nums:
+                if i.isupper():
+                    if i.lower() not in nums:
+                        return False
+                if i.islower():
+                    if i.upper() not in nums:
+                        return False
+            return True
+        ans=''
+        if len(s)==1:
+            return ans
+        for i in range(len(s)-1):
+            for j in range(i,len(s)):
+                temp=s[i:j+1]
+                if valid(temp):
+                    if len(ans)<len(temp):
+                        ans=temp
+        return ans
+        
+        or
+       
+class Solution:
+    def longestNiceSubstring(self, s: str) -> str:
+        temp = set(list(s))
+        for j,i in enumerate(s):
+            if not (i.upper() in temp and i.lower() in temp):
+                num1=self.longestNiceSubstring(s[:j])
+                num2=self.longestNiceSubstring(s[j+1:])
+                if len(num1)<len(num2):
+                    return num2
+                return num1
+        return s
