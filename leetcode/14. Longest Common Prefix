@@ -27,3 +27,28 @@ class Solution:
             if first=='':
                 return ''
         return first
+
+or
+
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        if strs==[]:
+            return ''
+        if len(strs)==1:
+            return strs[0]
+        ans=''
+        for i,j in zip(strs[0],strs[1]):
+            if i==j:
+                ans+=i
+            else:
+                break
+        for i in strs[2:]:
+            temp=''
+            for j,k in zip(i,ans):
+                if j==k:
+                    temp+=j
+                else:
+                    break
+            ans=temp
+        return ans
+                
