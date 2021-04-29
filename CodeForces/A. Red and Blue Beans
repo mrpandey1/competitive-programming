@@ -1,0 +1,10 @@
+def solve(r,b,d):
+    mn=min(r,b)
+    mx=max(r,b)
+    temp=0
+    if (d+1)*(mn)>=mx:
+        return 'YEs'
+    return 'No'   
+for i in range(int(input())):
+    r,b,d=list(map(int,input().split(' ')))
+    print(solve(r,b,d))
