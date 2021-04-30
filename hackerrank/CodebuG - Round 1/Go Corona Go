@@ -1,0 +1,12 @@
+def change(a,n):
+    m=n/a
+    sumi=m*(m +1)//2
+    ans=a*sumi
+    return int(ans)
+for i in range(int(input())):
+    w,p=list(map(int,input().split(' ')))
+    beds=change(3,w*3)
+    if beds>=p:
+        print(p)
+    else:
+        print(beds)
