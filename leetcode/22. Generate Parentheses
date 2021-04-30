@@ -27,3 +27,24 @@ class Solution:
                 helper(s+')',left,right+1)
         helper()
         return ans
+or
+
+import java.util.*;
+class Solution {
+    List<String> ans=new ArrayList<String>();
+    public List<String> generateParenthesis(int n) {
+        helper(n,0,0,"");
+        return this.ans;
+    }
+    public void helper(int n,int l,int r,String temp){
+        if(temp.length()==2*n){
+            ans.add(temp);
+            return;
+        }
+        if(l<n){
+            helper(n,l+1,r,temp+'(');
+        }if(r<l){
+            helper(n,l,r+1,temp+')');
+        }
+    }
+}
