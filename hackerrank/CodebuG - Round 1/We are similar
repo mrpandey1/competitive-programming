@@ -1,0 +1,16 @@
+def solve(strs):
+    ans=''
+    ans=len(strs)
+    temp=strs[1:]
+    while len(temp)>0:
+        for i,j in zip(strs,temp):
+            if i==j:
+                ans+=1
+            else:
+                break
+        temp=temp[1:]
+    print(ans)
+for i in range(int(input())):
+    s1=input()
+    solve(s1)
+    
