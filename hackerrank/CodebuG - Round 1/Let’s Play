@@ -1,0 +1,27 @@
+def diagonal(arr,n):
+    temp1=0
+    temp2=0
+    for i in range(0, n):
+        temp1 += arr[i][i]
+        temp2+= arr[-i-1][-i-1]
+    return max(temp1,temp2)
+def solve(arr):
+    if not arr:
+        return 0
+    ans=0
+    for i in arr:
+        if len(set(i))!=len(i):
+            ans+=1
+    for i in zip(*arr):
+        if len(set(i))!=len(i):
+            ans+=1
+    ans+=diagonal(arr,len(arr))
+    return ans
+
+for i in range(int(input())):
+    n=int(input())
+    arr=[]
+    for i in range(n):
+        temp=list(map(int,input().split()))
+        arr.append(temp)
+    print(solve(arr))
