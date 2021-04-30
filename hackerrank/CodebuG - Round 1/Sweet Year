@@ -1,0 +1,15 @@
+def leap(year):
+    return (( year%400 == 0)or (( year%4 == 0 ) and ( year%100 != 0)))
+def sumi(a):
+    temp=0
+    for i in str(a):
+        temp+=int(i)
+    return temp%2==0
+a=int(input())
+# print(str(a)==str(a)[::-1])
+# print(leap(a))
+# print(sum(a))
+if str(a)==str(a)[::-1] and leap(a) and sumi(a):
+    print('YES')
+else:
+    print('NO')
