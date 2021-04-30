@@ -1,0 +1,6 @@
+a=input()
+ans=0
+for i in a:
+    if not (i.isalpha() or i.isdigit() or i==' '):
+        ans+=1
+print(ans)
