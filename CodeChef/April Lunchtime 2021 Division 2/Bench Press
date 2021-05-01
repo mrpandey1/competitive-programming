@@ -1,0 +1,14 @@
+from collections import Counter
+def solve(w,wr,iw):
+    left=wr-iw
+    c=Counter(w)
+    for i in c:
+        if c[i]%2==0:
+            left-=i*c[i]
+    if left<=0:
+        return 'YES'
+    return 'no'
+for i in range(int(input())):
+    n,wr,iw=list(map(int,input().split()))
+    w=list(map(int,input().split()))
+    print(solve(w,wr,iw))
