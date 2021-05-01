@@ -1,0 +1,8 @@
+n=int(input())
+arr=list(map(int,input().split()))
+q=int(input())
+qarr=list(map(int,input().split()))
+temp=sum(arr)
+for i in qarr:
+    temp=(temp*2)%(10**9+7)
+    print(temp)
