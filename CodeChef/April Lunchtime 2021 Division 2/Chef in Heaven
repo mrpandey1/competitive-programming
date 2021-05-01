@@ -1,0 +1,17 @@
+def solve(year,arr):
+    if (arr.count('1')/len(arr))*100>=50:
+        return 'YES'
+    count=0
+    count2=0
+    for i in arr:
+        if i=='0':
+            count+=1
+        else:
+            count2+=1
+        if count2>=count:
+            return 'YES'
+    return 'NO'
+for i in range(int(input())):
+    year=int(input())
+    arr=input()
+    print(solve(year,arr))
