@@ -1,0 +1,21 @@
+for i in range(int(input())):
+    x,n=list(map(int,input().split()))
+    w=list(map(int,input().split()))
+    curr=0
+    if sum(w)==n:
+        print('NO')
+        continue
+    else:
+        w.sort()
+        for i in range(len(w)):
+            curr+=w[i]
+            if curr==n:
+                w[i],w[-1]=w[-1],w[i]
+    if curr==n:
+        print('NO')
+    else:
+        print('YES')
+        for i in w:
+            print(i,end=' ')
+        print()
+            
