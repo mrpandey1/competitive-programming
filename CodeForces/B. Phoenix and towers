@@ -1,0 +1,17 @@
+for i in range(int(input())):
+    n=int(input())
+    if n%2==1:
+        print('NO')
+        continue
+    ans=False
+    temp=n//2
+    if n%2==0:
+        if int(int(temp**(0.5))*int(temp**(0.5)))==temp:
+            print('YES')
+            continue
+    temp=n//4
+    if n%4==0:
+        if int(int(temp**(0.5))*int(temp**(0.5)))==temp:
+            print('YES')
+            continue
+    print('NO')
