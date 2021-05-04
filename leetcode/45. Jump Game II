@@ -1,0 +1,15 @@
+class Solution:
+    def jump(self, nums: List[int]) -> int:
+        if len(nums)==1:
+            return 0
+        des=len(nums)-1
+        curr=far=nums[0]
+        jumps=1
+        for i in range(1,len(nums)):
+            if i==des:
+                return jumps;
+            far=max(far,i+nums[i])
+            if i==curr:
+                jumps+=1
+                curr=far
+        return jumps
