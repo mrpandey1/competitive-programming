@@ -15,3 +15,12 @@ class Solution:
                         break
         return ans
                 
+                or
+                
+ class Solution:
+    def minDeletionSize(self, strs: List[str]) -> int:
+        ans=0
+        for i in zip(*strs):
+            if any(i[k]>i[k+1] for k in range(len(i)-1)):
+                ans+=1
+        return ans
