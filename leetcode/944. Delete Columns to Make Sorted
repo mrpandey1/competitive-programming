@@ -1,0 +1,17 @@
+class Solution:
+    def minDeletionSize(self, strs: List[str]) -> int:
+        k=len(strs[0])
+        ans=0
+        for j in range(k):
+            arr=[]
+            for i in strs:
+                if not arr:
+                    arr.append(ord(i[j]))
+                else:
+                    if arr[-1]<=ord(i[j]):
+                        arr[-1]=ord(i[j])
+                    else:
+                        ans+=1
+                        break
+        return ans
+                
