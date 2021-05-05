@@ -1,0 +1,27 @@
+class Solution {
+    public void helper(List<String> ans,int[] path,String s,int currIndex,int segment){
+        if(segment==4 && currIndex==s.length()){
+            ans.add(path[0]+"."+path[1]+"."+path[2]+"."+path[3]);
+            return;
+        }if(segment==4 || currIndex==s.length()){
+            return;
+        }
+        for(int i=1;i<=3 && currIndex+i<=s.length();i++){
+            String snap=s.substring(currIndex,currIndex+i);
+            int value=Integer.parseInt(snap);
+            if(value>255 || i>=2 && s.charAt(currIndex)=='0'){
+                break;
+            }
+            path[segment]=value;
+            helper(ans,path,s,currIndex+i,segment+1);
+            path[segment]=-1;
+        }
+        return;
+    } 
+    public List<String> restoreIpAddresses(String s) {
+        List<String> ans=new ArrayList<String>();
+        int[] path=new int[4];
+        helper(ans,path,s,0,0);
+        return ans;
+    }
+}
