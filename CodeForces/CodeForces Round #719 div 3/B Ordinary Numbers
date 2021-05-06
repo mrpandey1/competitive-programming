@@ -1,0 +1,18 @@
+for i in range(int(input())):
+    n=int(input())
+    if n<=9:
+        print(n)
+        continue
+    temp='11'
+    ans=9
+    while int(temp)<=n:
+        nz=''
+        ans+=1
+        for i in temp:
+            if i=='9':
+                nz='1'*(len(temp)+1)
+                break
+            else:
+                nz+=str(int(i)+1)
+        temp=nz
+    print(ans)
