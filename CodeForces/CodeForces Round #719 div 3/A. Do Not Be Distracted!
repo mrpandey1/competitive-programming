@@ -1,0 +1,15 @@
+for i in range(int(input())):
+    work=int(input())
+    done=input()
+    s=set()
+    ans=True
+    prev=done[0]
+    for i in range(len(done)):
+        if done[i]!=prev:
+            if done[i] in s:
+                ans=False
+                break
+            s.add(prev)
+            prev=done[i]
+    print('yes') if ans else print('no')
+            
