@@ -1,0 +1,18 @@
+for i in range(int(input())):
+    n=int(input())
+    temp=[[n for i in range(n)] for i in range(n)]
+    mx=n*n
+    val=1
+    if n==2:
+        print('-1')
+        continue
+    for i in range(n):
+        for j in range(n):
+            if val>mx:
+                val=2
+            temp[i][j]=val
+            val+=2
+    for i in temp:
+        for j in i:
+            print(j,end=' ')
+        print()
