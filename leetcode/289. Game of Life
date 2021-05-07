@@ -1,0 +1,64 @@
+class Solution:
+    def gameOfLife(self, board: List[List[int]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+        def getVal(i,j):
+            temp=0
+            try:
+                if i!=len(board)-1 and j!=0:
+                    temp+=board[i+1][j-1]
+            except:
+                pass
+            try:
+                if i!=0:
+                    temp+=board[i-1][j]
+            except:
+                pass
+            try:
+                if i!=0 and j!=0:
+                    temp+=board[i-1][j-1]
+            except:
+                pass
+            try:
+                if j!=len(board[0])-1 and i!=0:
+                    temp+=board[i-1][j+1]
+            except:
+                pass
+            try:
+                if  j!=len(board[0])-1:
+                    temp+=board[i][j+1]
+            except:
+                pass
+            try:
+                if  j!=0:
+                    temp+=board[i][j-1]
+            except:
+                pass
+            try:
+                if i!=len(board)-1:
+                    temp+=board[i+1][j]
+            except:
+                pass
+            try:
+                if i!=len(board)-1 and j!=len(board[0])-1:
+                    temp+=board[i+1][j+1]
+            except:
+                pass
+            return temp
+        loc=[]
+        for i in range(len(board)):
+            for j in range(len(board[0])):
+                temp=getVal(i,j)
+                if board[i][j]==1:
+                    if temp<2 or temp>3:
+                        loc.append([i,j])
+                else:
+                    if temp==3:
+                        loc.append([i,j])
+        # print(loc)
+        for i in loc:
+            if board[i[0]][i[1]]==1:
+                board[i[0]][i[1]]=0
+            else:
+                board[i[0]][i[1]]=1
