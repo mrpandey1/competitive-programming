@@ -1,0 +1,18 @@
+class Solution:
+    def isLongPressedName(self, name: str, typed: str) -> bool:
+        previous=name[0]
+        if len(typed)<len(name):
+            return False
+        while name!='':
+            if not typed:
+                return False
+            if name[0]==typed[0]:
+                previous=name[0]
+                name=name[1:]
+                typed=typed[1:]
+            elif typed[0]==previous:
+                typed=typed[1:]
+            else:
+                return False
+        return name=='' and (len(set(typed))==0 or (len(set(typed))==1 and typed[0]==previous))
+            
