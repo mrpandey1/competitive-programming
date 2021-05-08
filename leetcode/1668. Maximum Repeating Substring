@@ -8,3 +8,16 @@ class Solution:
             ans+=1
             i+=1
         return ans
+ or
+ 
+ class Solution:
+    def maxRepeating(self, sequence: str, word: str) -> int:
+        ans=0
+        temp=''
+        while True:
+            temp+=word
+            if sequence.find(temp)==-1:
+                break
+            else:
+                ans+=1
+        return ans
