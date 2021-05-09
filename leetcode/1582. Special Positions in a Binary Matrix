@@ -1,0 +1,23 @@
+class Solution:
+    def numSpecial(self, mat: List[List[int]]) -> int:
+        rowCheck=set()
+        colCheck=set()
+        # rowCheck=[False]*len(mat)
+        # colCheck=[False]*len(mat[0])
+        def row(mat):
+            for i in range(len(mat)):
+                if sum(mat[i])==1:
+                    rowCheck.add(i)
+            count=0
+            for i in zip(*mat):
+                if sum(i)==1:
+                    colCheck.add(count)
+                count+=1
+        row(mat)
+        ans=0
+        for i in range(len(mat)):
+            for j in range(len(mat[0])):
+                if mat[i][j]==1:
+                    if i in rowCheck and j in colCheck:
+                        ans+=1
+        return ans
