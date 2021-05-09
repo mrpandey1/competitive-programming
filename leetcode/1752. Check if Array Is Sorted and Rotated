@@ -1,0 +1,15 @@
+class Solution:
+    def check(self, nums: List[int]) -> bool:
+        if len(nums)==1:
+            return True
+        for i in range(len(nums)-1):
+            if nums[i]>nums[i+1]:
+                break
+        # print(i)
+        if i==len(nums)-2 and nums[-1]>=nums[i]:
+            return True
+        nums=nums[i+1:]+nums[0:i+1]
+        for i in range(len(nums)-1):
+            if nums[i+1]<nums[i]:
+                return False
+        return True
