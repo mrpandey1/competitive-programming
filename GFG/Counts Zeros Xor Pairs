@@ -1,0 +1,8 @@
+from collections  import Counter
+def calculate (arr, n) : 
+    temp=Counter(arr)
+    ans=0
+    for i in temp.values():
+        if i>1:
+            ans+=i*(i-1)//2
+    return ans
