@@ -1,0 +1,6 @@
+class Solution:
+    #Function to rotate an array by d elements in counter-clockwise direction. 
+    def rotateArr(self,A,D,N):
+        D=D%N
+        A[0:N-D],A[N-D:]=A[D:],A[:D]
+        
