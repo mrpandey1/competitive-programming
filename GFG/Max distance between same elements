@@ -1,0 +1,14 @@
+class Solution:
+    # Your task is to Complete this function
+    # functtion should return an integer
+    def maxDistance(self, arr, n):
+        temp={}
+        for i in range(len(arr)):
+            if arr[i] not in temp:
+                temp[arr[i]]=[i,i]
+            else:
+                temp[arr[i]][-1]=i
+        mx=-1
+        for i in temp.values():
+            mx=max(mx,i[1]-i[0])
+        return mx
