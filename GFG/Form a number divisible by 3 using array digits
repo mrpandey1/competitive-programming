@@ -1,0 +1,6 @@
+class Solution:
+    def isPossible(self, N, arr):
+        temp=0
+        for i in range(N):
+            temp=(arr[i]+temp)%3
+        return 1 if temp==0 else 0
