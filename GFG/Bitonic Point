@@ -1,0 +1,15 @@
+class Solution:
+
+	def findMaximum(self,arr, n):
+        i=0
+        j=len(arr)
+        while i<=j:
+            mid=(i+j)//2
+            try:
+                if arr[mid]>=arr[mid-1]:
+                    i=mid+1
+                else:
+                    j=mid-1
+            except:
+                return arr[-1]
+        return arr[j]
