@@ -1,0 +1,10 @@
+arr=[1,1,1,1,1,1,1,1,1,0,0,0]
+i=0
+j=len(arr)
+while i<=j:
+    mid=i+(j-i)//2
+    if arr[mid]==1:
+        i=mid+1
+    else:
+        j=mid-1
+print(len(arr)-i)
