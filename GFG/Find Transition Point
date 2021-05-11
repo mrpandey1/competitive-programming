@@ -1,0 +1,15 @@
+def transitionPoint(arr, n):
+    i=0
+    j=len(arr)
+    while i<=j:
+        mid=(i+j)//2
+        try:
+            if arr[mid]==1:
+                j=mid-1
+            else:
+                i=mid+1
+        except:
+            return -1
+    if i>n-1:
+        return -1
+    return i
