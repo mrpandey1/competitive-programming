@@ -1,0 +1,10 @@
+def Anagrams(words,n):
+    ans={}
+    for i in words:
+        temp=''.join(sorted(i))
+        if temp in ans:
+            ans[temp]+=[i]
+        else:
+            ans[temp]=[i]
+            
+    return sorted(ans.values())
