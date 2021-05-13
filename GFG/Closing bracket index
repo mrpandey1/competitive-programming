@@ -1,0 +1,14 @@
+class Solution:
+    def closing (self,s, pos):
+        if s[pos]!='[':
+            return pos
+        k=0
+        for i in range(pos+1,len(s)):
+            if s[i]==']':
+                if k==0:
+                    return i
+                else:
+                    k-=1
+            elif s[i]=='[':
+                k+=1
+        return -1
