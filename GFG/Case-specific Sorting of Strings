@@ -1,0 +1,22 @@
+
+class Solution:
+    def caseSort(self,s,n):
+        temp=[]
+        ans=''
+        for i in s:
+            temp.append(i)
+        temp.sort()
+        j=0
+        pos=0
+        for i in range(len(temp)):
+           if temp[i].islower():
+               pos=i
+               break
+        for i in s:
+            if i.isupper():
+                ans+=temp[j]
+                j+=1
+            else:
+                ans+=temp[pos]
+                pos+=1
+        return ans
