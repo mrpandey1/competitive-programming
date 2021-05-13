@@ -1,0 +1,11 @@
+class Solution:
+	def balancedNumber(self, N):
+	    i=0
+	    j=len(N)//2+1
+	    temp1=0
+	    while j<len(N):
+	        temp1+=int(N[i])
+	        temp1-=int(N[j])
+	        j+=1
+	        i+=1
+	    return 1 if temp1==0 else 0
