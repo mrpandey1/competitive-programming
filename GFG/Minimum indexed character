@@ -1,0 +1,9 @@
+class Solution:
+	def printMinIndexChar(self, st, patt):
+	    temp=set()
+	    for i in patt:
+	        temp.add(i)
+	    for i in st:
+	        if i in temp:
+	            return i
+	    return '$'
