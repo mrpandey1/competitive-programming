@@ -1,0 +1,10 @@
+class Solution:
+	def removeDups(self, S):
+        a=[0]*26
+        s=''
+	    for i in range(len(S)):
+	        loc=97-ord(S[i])
+	        if a[loc]==0:
+	            s+=S[i]
+	            a[loc]+=1
+	    return s
