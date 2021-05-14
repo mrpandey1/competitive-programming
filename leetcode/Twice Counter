@@ -1,0 +1,9 @@
+from collections import Counter
+class Solution:
+    def countWords(self,List, n):
+        temp=Counter(List)
+        ans=0
+        for key,val in temp.items():
+            if val==2:
+                ans+=1
+        return ans
