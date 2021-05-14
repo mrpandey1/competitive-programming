@@ -1,0 +1,9 @@
+class Solution:
+    
+    def checkPangram(self,s):
+        temp=set()
+        for i in s:
+            if i.isalpha():
+                temp.add(i.lower())
+        return 1 if len(temp)==26 else 0
+        
