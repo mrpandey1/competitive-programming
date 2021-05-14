@@ -1,0 +1,17 @@
+class Solution:
+    
+    #Function to find list of all words possible by pressing given numbers.
+    def possibleWords(self,a,N):
+        ans=[]
+        ans.append("")
+        phones= {1:"" , 2:"abc" , 3:"def" , 4:"ghi" , 5:"jkl" , 6:"mno" , 7:"pqrs" , 8:"tuv" , 9:"wxyz"}
+        for i in a:
+            if i==1:
+                continue
+            word=phones[i]
+            temp=[]
+            for alpha in word:
+                for j in ans:
+                    temp.append(j+alpha)
+            ans=temp
+        return sorted(ans)
