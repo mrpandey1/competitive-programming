@@ -1,0 +1,14 @@
+cache={0:0}
+def number0f2s(n):
+    if n<2:
+        return 0
+    ans=cache[max(cache.keys())]
+    for i in range(max(cache.keys()),n+1):
+        if i not in cache:
+            ans+=str(i).count('2')
+            cache[i]=ans
+    return cache[n]
+def numberOf2sinRange(n):
+    if n in cache:
+        return cache[n]
+    return number0f2s(n)
