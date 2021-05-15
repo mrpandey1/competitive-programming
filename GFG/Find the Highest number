@@ -1,0 +1,13 @@
+class Solution:
+	def findPeakElement(self, a):
+	    i=0
+	    j=len(a)-1
+	    while i<j:
+	       mid=(i+j)//2
+	       if a[mid]>a[mid-1] and a[mid]>a[mid+1]:
+	            return a[mid]
+	       elif a[mid]>a[mid-1]:
+	           i=mid+1
+	       else:
+	           j=mid-1
+	    return a[i]
