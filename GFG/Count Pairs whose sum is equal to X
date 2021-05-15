@@ -1,0 +1,21 @@
+class Solution:
+    def countPair(self,h1,h2,n1,n2,x):
+        temp1={}
+        ans=0
+        temp2={}
+        while h1:
+            if h1.data in temp1:
+                temp1[h1.data]+=1
+            else:
+                temp1[h1.data]=1
+            h1=h1.next
+        while h2:
+            if h2.data in temp2:
+                temp2[h2.data]+=1
+            else:
+                temp2[h2.data]=1
+            h2=h2.next
+        for key,val in temp2.items():
+            if x-key in temp1:
+                ans+=(temp1[x-key]*val)
+        return ans
