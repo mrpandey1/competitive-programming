@@ -1,0 +1,12 @@
+def preOrder(root):
+    temp=[root]
+    ans=[]
+    while temp:
+        val=temp.pop(0)
+        if val:
+            ans.append(val.data)
+            if val.right:
+                temp.insert(0,val.right)
+            if val.left:
+                temp.insert(0,val.left)
+    return ans   
