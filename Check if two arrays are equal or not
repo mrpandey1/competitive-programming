@@ -1,0 +1,6 @@
+#User function Template for python3
+from collections import Counter
+class Solution:
+    #Function to check if two arrays are equal or not.
+    def check(self,A,B,N):
+        return 1 if C
