@@ -1,0 +1,17 @@
+class Solution:
+    def reverse(self,head, k):
+        def rev(head,k):
+            prev=None
+            curr=head
+            count=0
+            while curr and count<k:
+                nxt=curr.next
+                curr.next=prev
+                prev=curr
+                curr=nxt
+                count+=1
+            if nxt is not None:
+                head.next=rev(nxt,k)
+            return prev
+        return rev(head,k)
+            
