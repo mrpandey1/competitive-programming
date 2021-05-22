@@ -1,0 +1,25 @@
+def intersetPoint(head1,head2):
+    temp=head1
+    count1=0
+    while temp:
+        count1+=1
+        temp=temp.next    
+    temp=head2
+    count2=0
+    while temp:
+        count2+=1
+        temp=temp.next
+    if count2>count1:
+        count1,count2=count2,count1
+        head1,head2=head2,head1
+    diff=count1-count2
+    temp=head1
+    for i in range(diff):
+        temp=temp.next
+    head1=temp
+    while head1 and head2:
+        if head1==head2:
+            return head1.data
+        head1=head1.next
+        head2=head2.next
+    return -1
