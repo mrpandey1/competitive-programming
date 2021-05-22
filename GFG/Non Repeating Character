@@ -1,0 +1,14 @@
+class Solution:
+    
+    #Function to find the first non-repeating character in a string.
+    def nonrepeatingCharacter(self,s):
+        temp={}
+        for i in s:
+            if i in temp:
+                temp[i]+=1
+            else:
+                temp[i]=1
+        for i in s:
+            if temp[i]==1:
+                return i
+        return -1
