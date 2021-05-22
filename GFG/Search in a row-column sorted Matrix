@@ -1,0 +1,20 @@
+class Solution:
+    def binary(self,arr,target):
+        i=0
+        j=len(arr)-1
+        while i<=j:
+            mid=i+(j-i)//2
+            if arr[mid]==target:
+                return True
+            elif arr[mid]>target:
+                j=mid-1
+            else:
+                i=mid+1
+        return False
+    
+    #Function to search a given number in row-column sorted matrix.
+    def search(self,matrix, n, m, x):
+        for i in matrix:
+            if i[0]<=x and i[-1]>=x:
+                return 1 if self.binary(i,x) else 0
+        return 0
