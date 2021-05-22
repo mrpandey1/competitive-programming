@@ -1,0 +1,13 @@
+class Solution:
+    #Function to arrange all letters of a string in lexicographical 
+    #order using Counting Sort.
+    def countSort(self,arr):
+        temp=[0]*26
+        ans=''
+        for i in arr:
+            temp[ord(i)-97]+=1
+        for i in range(26):
+            if temp[i]!=0:
+                char=chr(97+i)
+                ans+=char*temp[i]
+        return ans
