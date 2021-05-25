@@ -1,0 +1,33 @@
+from collections import Counter
+class Solution:
+    
+    # arr[] : the input array
+    # N : size of the array arr[]
+    
+    #Function to return length of longest subsequence of consecutive integers.
+    def findLongestConseqSubseq(self,arr, N):
+        temp=Counter(arr)
+        ans=1
+        mn=min(arr)
+        k=0
+        count=1
+        while True:
+            try:
+                if k==N+1:
+                    break
+                if mn+1 in temp:
+                    mn=mn+1
+                    count+=1
+                else:
+                    ans=max(ans,count)
+                    if ans>=N//2:
+                        break
+                    count=1
+                    mn=arr[k]
+                    k+=1
+                #print(count,ans,mn)
+            except:
+                break
+        ans=max(ans,count)
+        return ans
+        
