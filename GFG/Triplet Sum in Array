@@ -1,0 +1,17 @@
+class Solution:
+     
+    #Function to find if there exists a triplet in the 
+    #array A[] which sums up to X.
+    def find3Numbers(self,A, n, X):
+        ans=0
+        A.sort()
+        for i in range(len(A)):
+            target=X
+            s=set()
+            target-=A[i]
+            for _ in A[i+1:]:
+                if target-_ in s:
+                    return 1
+                else:
+                    s.add(_)
+        return 0
