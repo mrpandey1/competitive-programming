@@ -1,0 +1,10 @@
+    def subArrayExists(self,arr,n):
+        temp=set()
+        sm=0
+        for i in arr:
+            sm+=i
+            # print(temp,sm)
+            if i==0 or sm==0 or sm in temp:
+                return True
+            temp.add(sm)
+        return False
