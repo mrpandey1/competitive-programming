@@ -1,0 +1,11 @@
+
+class Solution:
+    def factorial(self, N):
+        fact=1
+        n=N
+        while n>0:
+            fact*=n
+            n-=1
+        fact=str(fact)
+        ans=[int(x) for x in fact]
+        return ans
