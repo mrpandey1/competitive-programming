@@ -1,0 +1,12 @@
+import heapq
+from heapq import heappop
+def kthSmallest(mat, n, k):
+    temp=[]
+    for i in mat:
+        for j in i:
+            temp.append(j)
+    heapq.heapify(temp)
+    while k>1:
+        heappop(temp)
+        k-=1
+    return temp[0]
