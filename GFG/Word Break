@@ -1,0 +1,10 @@
+def wordBreak(line, dictionary):
+    n=len(line)
+    dp=[False]*(n+1)
+    dp[0]=True
+    for i in range(n+1):
+        for j in range(0,i):
+            if dp[j] and line[j:i] in dictionary:
+                dp[i]=True
+                break
+    return dp[-1]
