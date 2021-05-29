@@ -1,0 +1,19 @@
+class Solution:
+    def findSubString(self, a):
+        has={}
+        k=len(set(a))
+        i=0
+        j=0
+        mn=len(a)
+        while j<len(a):
+            has[a[j]]=has.get(a[j],0)+1
+            if len(has)<k:
+                pass
+            elif len(has)==k:
+                if a[i] in has:
+                    while has[a[i]]>1:
+                        has[a[i]]-=1
+                        i+=1
+                mn=min(mn,j-i+1)
+            j+=1
+        return mn
