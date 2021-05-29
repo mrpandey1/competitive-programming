@@ -1,0 +1,15 @@
+class Solution:
+    def minInsertions(self, a: str) -> int:
+        def lps(a,b):
+            n=len(a)
+            dp=[[0]*(n+1) for i in range(n+1)]
+            for i in range(n+1):
+                for j in range(n+1):
+                    if i==0 or j==0:
+                        pass
+                    elif a[i-1]==b[j-1]:
+                        dp[i][j]=dp[i-1][j-1]+1
+                    else:
+                        dp[i][j]=max(dp[i-1][j],dp[i][j-1])
+            return dp[-1][-1]
+        return len(a)-lps(a,a[::-1])
