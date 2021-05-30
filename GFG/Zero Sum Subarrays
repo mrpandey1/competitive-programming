@@ -1,0 +1,15 @@
+
+class Solution:
+    #Function to count subarrays with sum equal to 0.
+    def findSubArrays(self,arr,n):
+        curr=0
+        ans=0
+        temp={}
+        for i in range(len(arr)):
+            curr+=arr[i]
+            if curr==0:
+                ans+=1
+            if curr in temp:
+                ans+=temp[curr]
+            temp[curr]=temp.get(curr,0)+1
+        return ans
