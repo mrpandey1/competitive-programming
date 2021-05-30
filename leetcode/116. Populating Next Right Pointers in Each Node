@@ -1,0 +1,14 @@
+
+class Solution:
+    def connect(self, root: 'Node') -> 'Node':
+        def dfs(curr,nex):
+            if not curr:
+                return
+            curr.next=nex
+            dfs(curr.left,curr.right)
+            if curr.next is None:
+                dfs(curr.right,None)
+            else:
+                dfs(curr.right,curr.next.left)
+        dfs(root,None)
+        return root
