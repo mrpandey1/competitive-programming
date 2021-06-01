@@ -1,0 +1,7 @@
+def reverseDLL(head):
+    while head:
+        head.next,head.prev=head.prev,head.next
+        if head.prev==None:
+            break
+        head=head.prev
+    return head
