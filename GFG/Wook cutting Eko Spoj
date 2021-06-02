@@ -1,0 +1,22 @@
+arr=[20,15,10,17]
+req=7
+end=max(arr)
+start=0
+ans=0
+while start<=end:
+    mid=start+(end-start)//2
+    temp=0
+    for i in arr:
+        if i-mid>0:
+            temp+=i-mid
+    if temp==req:
+        ans=mid
+        break
+    elif temp>req:
+        start=mid+1
+        if mid>ans:
+            ans=mid
+    else:
+        end=mid-1
+    print(mid,arr,ans,temp)
+print(ans)
