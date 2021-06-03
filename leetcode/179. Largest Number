@@ -1,0 +1,11 @@
+class Solution:
+    def largestNumber(self, nums: List[int]) -> str:    
+        arr=[]
+        for i in nums:
+            arr.append(str(i))
+        k=sorted(arr,key=lambda x:x*10)
+        k=k[::-1]
+        ans=""
+        for i in k:
+            ans+=str(i)
+        return '0' if int(ans)==0 else ans
