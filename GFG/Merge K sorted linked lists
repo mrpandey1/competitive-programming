@@ -1,0 +1,24 @@
+class Solution:
+    def mergeKLists(self,lists,K):
+        def merge(l1,l2):
+            temp=head=Node(0)
+            while l1 and l2:
+                if l1.data<l2.data:
+                    temp.next=l1
+                    l1=l1.next
+                else:
+                    temp.next=l2
+                    l2=l2.next
+                temp=temp.next
+            if l1:
+                temp.next=l1
+            if l2:
+                temp.next=l2
+            return head.next
+        amount = len(lists)
+        interval = 1
+        while interval < amount:
+            for i in range(0, amount - interval, interval * 2):
+                lists[i] = merge(lists[i], lists[i + interval])
+            interval *= 2
+        return lists[0] if amount > 0 else None
