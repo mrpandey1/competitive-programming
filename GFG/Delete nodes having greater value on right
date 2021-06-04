@@ -1,0 +1,10 @@
+class Solution:
+    def compute(self,head):
+        if not head.next:
+            return head
+        temp=self.compute(head.next)
+        if temp.data>head.data:
+            return temp
+        else:
+            head.next=temp
+        return head
