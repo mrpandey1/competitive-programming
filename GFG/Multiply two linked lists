@@ -1,0 +1,11 @@
+def multiplyTwoList(head1, head2):
+    # Code here
+    one=two=''
+    while head1:
+        one+=str(head1.data)
+        head1=head1.next
+    while head2:
+        two+=str(head2.data)
+        head2=head2.next
+    ans=int(one)*int(two)
+    return ans%MOD
