@@ -1,0 +1,19 @@
+class Solution:
+    #Function to sort a linked list of 0s, 1s and 2s.
+    def segregate(self, head):
+        start=head
+        temp=head
+        zero=head
+        while head:
+            if head.data==0:
+                start.data,head.data=head.data,start.data
+                start=start.next
+                zero=zero.next
+            head=head.next
+        head=zero
+        while head:
+            if head.data==1:
+                zero.data,head.data=head.data,zero.data
+                zero=zero.next
+            head=head.next
+        return temp
