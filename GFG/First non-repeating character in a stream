@@ -1,0 +1,18 @@
+class Solution:
+	def FirstNonRepeating(self, A):
+	    hashmap=[0]*26
+	    ans=''
+	    front=0
+	    for i in range(len(A)):
+	        back=i
+	        hashmap[ord(A[i])-97]+=1
+	        while front<=back:
+	            if hashmap[ord(A[front])-97]<=1:
+	                break
+	            else:
+	                front+=1
+	        if front>back:
+	            ans+='#'
+	        else:
+	            ans+=A[front]
+	    return ans
