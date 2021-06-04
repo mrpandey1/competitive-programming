@@ -1,0 +1,24 @@
+class Solution:
+    def divide(self, N, head):
+        odd=node()
+        odd.data=0
+        even=node()
+        even.data=0
+        e=even
+        o=odd
+        curr=head
+        while curr:
+            if curr.data & 1:
+                odd.next=node()
+                odd.next.data=curr.data
+                odd=odd.next
+            curr=curr.next
+        curr=head
+        while curr:
+            if not curr.data & 1:
+                even.next=node()
+                even.next.data=curr.data
+                even=even.next
+            curr=curr.next
+        even.next=o.next
+        return e.next
