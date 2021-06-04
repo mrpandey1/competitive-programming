@@ -1,0 +1,11 @@
+def getNthFromLast(head,n):
+    try:
+        fast=slow=head
+        for i in range(n):
+            fast=fast.next
+        while fast:
+            slow=slow.next
+            fast=fast.next
+        return slow.data
+    except:
+        return -1
