@@ -1,0 +1,23 @@
+#User function Template for python3
+
+from collections import defaultdict
+class Solution:
+    
+    #Function to return a list of nodes visible from the top view 
+    #from left to right in Binary Tree.
+    def topView(self,root):
+        nodes=defaultdict(list)
+        def dfs(root,x,y):
+            if not root:
+                return
+            nodes[x].append((root.data,y))
+            dfs(root.left,x-1,y+1)
+            dfs(root.right,x+1,y+1)
+        dfs(root,0,0)
+        # print(nodes)
+        arr=[[n[0] for n in sorted(nodes[k], key=lambda x:(x[1], x[0]))]
+                for k in sorted(nodes.keys())]
+        ans=[]
+        for i in arr:
+            ans.append(i[0])
+        return ans
