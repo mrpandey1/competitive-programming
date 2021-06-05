@@ -1,0 +1,19 @@
+class Solution:
+    #Function to return list containing elements of right view of binary tree.
+    def rightView(self,root):
+        if not root:
+            return []
+        queue=[root]
+        ans=[]
+        while queue:
+            level=[i.data for i in queue]
+            ans.append(level[-1])
+            temp=[]
+            for i in queue:
+                if i.left:
+                    temp.append(i.left)
+                if i.right:
+                    temp.append(i.right)
+            queue=temp
+        return ans
+        # code here
