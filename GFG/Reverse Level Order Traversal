@@ -1,0 +1,14 @@
+def reverseLevelOrder(root):
+        queue=[root]
+        ans=[]
+        while queue:
+            level=[i.data for i in queue]
+            ans.insert(0,level[:])
+            temp=[]
+            for i in queue:
+                if i.left:
+                    temp.append(i.left)
+                if i.right:
+                    temp.append(i.right)
+            queue=temp
+        return sum(ans,[])
