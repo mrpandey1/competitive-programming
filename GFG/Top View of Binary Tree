@@ -21,3 +21,22 @@ class Solution:
         for i in arr:
             ans.append(i[0])
         return ans
+or
+
+class Solution:
+    
+    #Function to return a list of nodes visible from the top view 
+    #from left to right in Binary Tree.
+    def topView(self,root):
+        top={}
+        def dfs(root,top,x,y):
+            if not root:
+                return
+            if x not in top:
+                top[x]=[root.data,y]
+            elif y<top[x][1]:
+                top[x]=[root.data,y]
+            dfs(root.left,top,x-1,y+1)
+            dfs(root.right,top,x+1,y+1)
+        dfs(root,top,0,0)
+        return [top[i][0] for i in sorted(top.keys())]
