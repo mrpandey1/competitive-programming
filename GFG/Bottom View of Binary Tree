@@ -1,0 +1,15 @@
+def bottomView(root):
+    d=dict()
+    def dfs(root,d,x,y):
+        if not root:
+            return 
+        if x in d:
+            if y>=d[x][1]:
+                d[x]=[root.data,y]
+        else:
+            d[x]=[root.data,y]
+        dfs(root.left,d,x-1,y+1)
+        dfs(root.right,d,x+1,y+1)
+    dfs(root,d,0,0)
+    
+    return [d[i][0] for i in sorted(d.keys())]
