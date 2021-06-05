@@ -1,0 +1,40 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def findBottomLeftValue(self, root: TreeNode) -> int:
+        self.maxlevel=0
+        self.ans=0
+        def helper(root,level):
+            if not root:
+                return
+            helper(root.left,level+1)
+            if level>self.maxlevel:
+                self.maxlevel=level
+                self.ans=root.val
+            helper(root.right,level+1)
+        helper(root,1)
+        return self.ans
+        
+     or
+        
+simple level order traversal
+
+class Solution:
+    def findBottomLeftValue(self, root: TreeNode) -> int:
+        queue=[root]
+        ans=None
+        while queue:
+            level=[i.val for i in queue]
+            ans=level[0]
+            temp=[]
+            for i in queue:
+                if i.left:
+                    temp.append(i.left)
+                if i.right:
+                    temp.append(i.right)
+            queue=temp
+        return ans
