@@ -1,0 +1,11 @@
+class Solution:
+    def toSumTree(self, root) :
+        def helper(root):
+            if not root:
+                return 0
+            d=root.data
+            l=helper(root.left)
+            r=helper(root.right)
+            root.data=l+r
+            return d+root.data
+        return helper(root)
