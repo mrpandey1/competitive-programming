@@ -1,0 +1,10 @@
+def diagonal(root):
+    temp=defaultdict(list)
+    def dfs(root,temp,x):
+        if not root:
+            return 
+        temp[x].append(root.data)
+        dfs(root.left,temp,x+1)
+        dfs(root.right,temp,x)
+    dfs(root,temp,0)
+    return sum([temp[i] for i in temp],[])
