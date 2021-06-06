@@ -1,0 +1,23 @@
+from collections import deque
+def printFirstNegativeInteger( A, N, K):
+    i=0
+    pos=0
+    temp=deque()
+    ans=[]
+    for i in range(K):
+        if A[i]<0:
+            temp.append(i)
+    for i in range(K,N):
+        if not temp:
+            ans.append(0)
+        else:
+            ans.append(A[temp[0]])
+        while temp and temp[0]<=(i-K):
+            temp.popleft()
+        if A[i]<0:
+            temp.append(i)
+    if not temp:
+        ans.append(0)
+    else:
+        ans.append(A[temp[0]])
+    return ans
