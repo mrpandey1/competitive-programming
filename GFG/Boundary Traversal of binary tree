@@ -1,0 +1,33 @@
+class Solution:
+    def left(self,root,ans):
+        if not root:
+            return
+        if root.left:
+            ans.append(root.data)
+            self.left(root.left,ans)
+        elif root.right:
+            ans.append(root.data)
+            self.left(root.right,ans)
+    def right(self,root,ans):
+        if not root:
+            return
+        if root.right:
+            self.right(root.right,ans)
+            ans.append(root.data)
+        elif root.left:
+            self.right(root.left,ans)
+            ans.append(root.data)
+    def leaf(self,root,ans):
+        if not root:
+            return
+        self.leaf(root.left,ans)
+        if not root.left and not root.right:
+            ans.append(root.data)
+        self.leaf(root.right,ans)
+            
+    def printBoundaryView(self,root):
+        ans=[root.data]
+        self.left(root.left,ans)
+        self.leaf(root,ans)
+        self.right(root.right,ans)
+        return ans
