@@ -1,0 +1,15 @@
+class Solution:
+    def sumOfLongRootToLeafPath(self,root):
+        self.maxHeight=-1
+        self.ans=0
+        def dfs(root,temp,height):
+            # print(temp,self.ans,self.maxHeight)
+            if self.maxHeight<=height:
+                self.maxHeight=height
+                self.ans=max(self.ans,temp)
+            if not root:
+                return
+            dfs(root.left,temp+root.data,height+1)
+            dfs(root.right,temp+root.data,height+1)
+        dfs(root,0,0)
+        return self.ans
