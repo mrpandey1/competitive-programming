@@ -1,0 +1,16 @@
+class Solution:
+    def isSumTree(self,root):
+        self.ans=True
+        def helper(root):
+            if not root:
+                return 0
+            if not root.left and not root.right:
+                return root.data
+            l=helper(root.left)
+            r=helper(root.right)
+            if l+r!=root.data:
+                self.ans=False
+            # print(l,r)
+            return root.data+l+r
+        helper(root)
+        return 1 if self.ans else 0 
