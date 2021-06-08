@@ -1,0 +1,24 @@
+class Solution:
+    # The given root is the root of the Binary Tree
+    # Return the root of the generated BST
+    def binaryTreeToBST(self, root):
+        ans=root
+        self.arr=[]
+        self.count=0
+        def inorder(root):
+            if not root:
+                return
+            inorder(root.left)
+            self.arr.append(root.data)
+            inorder(root.right)
+        def inorder2(root):
+            if not root:
+                return
+            inorder2(root.left)
+            root.data=self.arr[self.count]
+            self.count+=1
+            inorder2(root.right)
+        inorder(root)
+        self.arr.sort()
+        inorder2(root)
+        return ans
