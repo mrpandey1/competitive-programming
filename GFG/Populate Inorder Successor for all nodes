@@ -1,0 +1,19 @@
+class Solution{
+    public void inorder(Node root,ArrayList<Node> al){
+        if(root==null){
+            return;
+        }
+        inorder(root.left,al);
+        al.add(root);
+        inorder(root.right,al);
+    }
+    public void populateNext(Node root){
+        ArrayList<Node> al=new ArrayList<Node>();
+        inorder(root,al);
+        Node prev=al.get(0);
+        for(int i=1;i<al.size();i++){
+            prev.next=al.get(i);
+            prev=prev.next;
+        }
+    }
+}
