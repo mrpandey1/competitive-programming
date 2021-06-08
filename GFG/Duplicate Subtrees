@@ -1,0 +1,15 @@
+from collections import defaultdict
+class Solution:
+    def printAllDups(self,root):
+        self.arr=[]
+        def preorder(root):
+            if not root:
+                return '$'
+            temp=preorder(root.left)+preorder(root.right)+str(root.data)
+            if self.has[temp]==1:
+                self.arr.append(root)
+            self.has[temp]+=1
+            return temp
+        self.has=defaultdict(int)
+        preorder(root)
+        return self.arr
