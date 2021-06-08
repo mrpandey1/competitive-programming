@@ -26,3 +26,27 @@ class Solution:
         for i in preorder[1:]:
             root=insert(root,i)
         return root
+or
+
+class Solution:
+    def bstFromPreorder(self, preorder: List[int]) -> TreeNode:
+        def build(preorder,n,pos,curr,mn,mx):
+            if pos==n or preorder[pos]<mn or preorder[pos]>mx:
+                return pos
+            if preorder[pos]<curr.val:
+                curr.left=TreeNode(preorder[pos])
+                pos+=1
+                pos=build(preorder,n,pos,curr.left,mn,curr.val-1)
+            if pos==n or preorder[pos]<mn or preorder[pos]>mx:
+                return pos        
+            curr.right=TreeNode(preorder[pos])
+            pos+=1
+            pos=build(preorder,n,pos,curr.right,curr.val+1,mx)
+            return pos
+        
+        root=TreeNode(preorder[0])
+        if len(preorder)==1:
+            return root
+        n=len(preorder)
+        build(preorder,n,1,root,float('-inf'),float('inf'))
+        return root
