@@ -1,0 +1,22 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+from collections import defaultdict
+class Solution:
+    def findDuplicateSubtrees(self, root: TreeNode) -> List[TreeNode]:
+        def preorder(root):
+            if not root:
+                return '$'
+            temp=preorder(root.left)+' '+preorder(root.right)+' '+str(root.val)
+            # print(temp)
+            if self.tree_string[temp]==1:
+                self.output.append(root)
+            self.tree_string[temp]+=1
+            return temp
+        self.tree_string=defaultdict(int)
+        self.output=[]
+        preorder(root)
+        return self.output
