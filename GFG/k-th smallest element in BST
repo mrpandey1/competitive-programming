@@ -1,0 +1,17 @@
+
+class Solution:
+    # Return the Kth smallest element in the given BST 
+    def KthSmallestElement(self, root, k):
+        stack=[]
+        try:
+            while True:
+                while root:
+                    stack.append(root)
+                    root=root.left
+                root=stack.pop()
+                k-=1
+                if not k:
+                    return root.data
+                root=root.right
+        except:
+            return -1
