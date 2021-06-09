@@ -1,0 +1,16 @@
+class Solution:
+    def find_permutation(self, S):
+        self.ans=[]
+        def permute(a,l,r): 
+            if l==r:
+                self.ans.append(''.join(a))
+            else:
+                for i in range(l,r+1):
+                    a[l],a[i]=a[i],a[l]
+                    permute(a,l+1,r)
+                    a[l],a[i]=a[i],a[l]
+        # print(S.split())
+        
+        permute(list(S),0,len(S)-1)
+        self.ans.sort()
+        return self.ans
