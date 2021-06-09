@@ -1,0 +1,17 @@
+class Solution:
+    def __init__(self):
+        self.temp=None
+    #Function to return max value that can be put in knapsack of capacity W.
+    def knapSack(self,W, wt, val, n):
+        if not self.temp:
+            self.temp=[[-1]*(W+1) for i in range(n+1)]
+        if n==0 or W==0:
+            return 0
+        if self.temp[n][W]!=-1:
+            return self.temp[n][W]
+        if wt[n-1]<=W:
+            self.temp[n][W]=max(val[n-1]+self.knapSack(W-wt[n-1],wt,val,n-1),self.knapSack(W,wt,val,n-1))
+            return self.temp[n][W]
+        elif(wt[n-1]>W):
+            self.temp[n][W]=self.knapSack(W,wt,val,n-1)
+            return self.temp[n][W]
