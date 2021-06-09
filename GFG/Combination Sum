@@ -1,0 +1,20 @@
+class Solution:
+    
+    #Function to return a list of indexes denoting the required 
+    #combinations whose sum is equal to given number.
+    def combinationalSum(self,arr, target):
+        self.ans=[]
+        arr.sort()
+        def helper(arr,target,index,path):
+            if target==0:
+                self.ans.append(list(path))
+                return 
+            for i in range(index,len(arr)):
+                if i>index and arr[i]==arr[i-1]:
+                    continue
+                pick=arr[i]
+                if target-pick<0:
+                    break
+                helper(arr,target-arr[i],i,path+[pick])
+        helper(arr,target,0,[])
+        return self.ans
