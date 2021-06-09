@@ -1,0 +1,29 @@
+
+# Class structure used:- 
+# class Node:
+#     def __init__(self, x):
+#         self.data = x
+#         self.left = None
+#         self.right = None
+
+def countPairs(root1, root2, x):
+    def inorder(root,arr):
+        if not root:
+            return 
+        inorder(root.left,arr)
+        arr.append(root.data)
+        inorder(root.right,arr)
+        return arr
+    def search(arr,arr2,target):
+        temp=set()
+        for i in arr:
+            temp.add(i)
+        ans=0
+        for i in arr2:
+            # print(target-i,temp)
+            if target-i in temp:
+                ans+=1
+        return ans
+    arr=inorder(root1,[])
+    arr2=inorder(root2,[])
+    return search(arr,arr2,x)
