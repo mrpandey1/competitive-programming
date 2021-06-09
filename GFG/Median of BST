@@ -1,0 +1,15 @@
+def findMedian(root):
+    def inorder(root,arr):
+        if not root:
+            return
+        inorder(root.left,arr)
+        arr.append(root.data)
+        inorder(root.right,arr)
+        return arr
+    arr=inorder(root,[])
+    if len(arr) & 1:
+        return arr[len(arr)//2]
+    ans=(arr[len(arr)//2]+arr[(len(arr)//2)-1])/2.0
+    if int(ans)==ans:
+        return int(ans)
+    return ans
