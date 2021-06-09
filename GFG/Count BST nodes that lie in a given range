@@ -1,0 +1,7 @@
+def getCount(root,low,high):
+    ans=0
+    if not root:
+        return ans
+    if low<=root.data<=high:
+        ans+=1
+    return ans+getCount(root.left,low,high)+getCount(root.right,low,high)
