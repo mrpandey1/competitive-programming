@@ -1,0 +1,14 @@
+class Solution:
+    def allPalindromicPerms(self, S):
+        ans=[]
+        def palin(s):
+            return s==s[::-1]
+        def helper(s,temp,ans,curr):
+            if curr>=len(s):
+                ans.append(list(temp))
+                return
+            for i in range(curr,len(s)):
+                if palin(s[curr:i+1]):
+                    helper(s,temp+[s[curr:i+1]],ans,i+1)
+        helper(S,[],ans,0)
+        return ans
