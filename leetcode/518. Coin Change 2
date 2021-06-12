@@ -14,3 +14,20 @@ class Solution:
         # for i in dp:
         #     print(i)
         return dp[len(coins)][target]
+
+or
+
+
+class Solution:
+    def change(self, n: int, S: List[int]) -> int:
+        m=len(S)
+        dp=[[0]*(n+1) for i in range(m+1)]
+        dp=[0 for i in range(n+1)]
+        dp[0]=1
+        for i in range(1,m+1):
+            for j in range(1,n+1):
+                # print(j)
+                if S[i-1]<=j:
+                    dp[j]=dp[j]+dp[j-S[i-1]]
+        return dp[-1]
+        
