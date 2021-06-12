@@ -1,0 +1,21 @@
+class Solution:
+	def perfectSum(self, arr, n, target):
+        dp=[[-1]*(target+1) for i in range(n+1)]
+        def countSubsets(arr,n,target):
+            if target==0:
+                dp[n][target]=1
+                return dp[n][target]
+            if n==0:
+                dp[n][target]=0
+                return 0
+            if dp[n][target]!=-1:
+                return dp[n][target]
+            elif arr[n-1]<=target:
+                dp[n][target]=(countSubsets(arr,n-1,target)+countSubsets(arr,n-1,target-arr[n-1]))%1000000007
+                return dp[n][target]
+            else:
+                dp[n][target]=countSubsets(arr,n-1,target)
+                return dp[n][target]
+        arr.sort(reverse=True)
+        countSubsets(arr,n,target)
+        return dp[-1][-1]
