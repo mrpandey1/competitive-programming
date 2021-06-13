@@ -1,0 +1,30 @@
+from collections import Counter
+class Solution:
+    def minSteps(self, X: str, Y: str) -> int:
+        n=len(X)
+        m=len(Y)
+        count=0
+        temp=Counter(X)&Counter(Y)
+        for i,j in temp.items():
+            count+=j
+        return max(n,m)-count
+ or
+ 
+class Solution:
+    def minSteps(self, X: str, Y: str) -> int:
+        X="".join(sorted(list(X)))
+        Y="".join(sorted(list(Y)))
+        ans=0
+        i=0
+        j=0
+        while i<len(X) and j<len(Y):
+            if X[i]==Y[j]:
+                i+=1
+                j+=1
+                ans+=1
+            else:
+                if X[i]<Y[j]:
+                    i+=1
+                else:
+                    j+=1
+        return max(len(X),len(Y))-ans
