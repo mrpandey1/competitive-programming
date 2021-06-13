@@ -1,0 +1,26 @@
+X='AGGTAB'
+Y='GXTXAYB'
+
+m= len(X) 
+n = len(Y) 
+L = [[None]*(n+1) for i in range(m+1)]
+for i in range(m+1):
+    for j in range(n+1):
+        if i==0 or j==0:
+            L[i][j]=0
+        elif X[i-1]==Y[j-1]:
+            L[i][j]=L[i-1][j-1]+1
+        else:
+            L[i][j]=max(L[i-1][j],L[i][j-1])
+ans=''
+i=len(L)-1
+j=len(L[0])-1
+while i>=0 and j>0:
+    if L[i][j]!=L[i][j-1]:
+        if L[i][j]!=0:
+            ans+=Y[j-1]
+        j-=1
+        i-=1
+    else:
+        j-=1
+print(ans[::-1])
