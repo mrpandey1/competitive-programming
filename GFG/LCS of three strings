@@ -1,0 +1,18 @@
+
+class Solution:
+
+    def LCSof3(self,A,B,C,n1,n2,n3):
+        dp=[[[-1]*(n3+1) for i in range(n2+1)] for j in range(n1+1)]
+        def helper(i,j,k):
+            if i==0 or j==0 or k==0:
+                dp[i][j][k]=0
+                return 0
+            if dp[i][j][k]!=-1:
+                return dp[i][j][k]
+            if A[i-1]==B[j-1]==C[k-1]:
+                dp[i][j][k]=1+helper(i-1,j-1,k-1)
+                return dp[i][j][k]
+            else:
+                dp[i][j][k]=max(helper(i-1,j,k),helper(i,j-1,k),helper(i,j,k-1))
+                return dp[i][j][k]
+        return helper(n1,n2,n3)
