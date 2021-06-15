@@ -1,0 +1,18 @@
+class Solution:
+    def minScoreTriangulation(self, arr: List[int]) -> int:
+        N=len(arr)
+        dp=[[-1]*(N+1) for i in range(N+1)]
+        def helper(arr,i,j):
+            # print(i,j)
+            if i==j:
+                dp[i][j]=0
+                return 0
+            if dp[i][j]!=-1:
+                return dp[i][j]
+            ans=float('inf')
+            for k in range(i,j):
+                temp=helper(arr,i,k)+helper(arr,k+1,j)+arr[i-1]*arr[k]*arr[j]
+                ans=min(ans,temp)
+                dp[i][j]=ans
+            return dp[i][j]
+        return helper(arr,1,N-1)
