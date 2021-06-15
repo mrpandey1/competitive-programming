@@ -1,0 +1,16 @@
+
+class Solution:
+    
+    def maximumMeetings(self,n,start,end):
+        temp=[]
+        for i,j in zip(start,end):
+            temp.append((i,j))
+        temp=sorted(temp,key=lambda x:x[1])
+        start=-1
+        ans=0
+        # print(temp)
+        for i in range(n):
+            if temp[i][0]>start:
+                ans+=1
+                start=temp[i][1]
+        return ans
