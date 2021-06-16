@@ -1,0 +1,9 @@
+
+class Solution:
+    def longestSubsequence(self, n, arr):
+        dp=[1]*n
+        for i in range(len(arr)):
+            for j in range(i):
+                if abs(arr[i]-arr[j])==1:
+                    dp[i]=max(dp[i],dp[j]+1)
+        return max(dp)
