@@ -1,0 +1,16 @@
+class Solution:    
+    #Function to get the maximum total value in the knapsack.
+    def fractionalknapsack(self, W,items,n):
+        items.sort(key=lambda x:x.weight/x.value)
+        val=0
+        for i in range(len(items)):
+            if W<items[i].weight:
+                val+=(items[i].value/items[i].weight)*W
+                break
+            elif W>items[i].weight:
+                val+=items[i].value
+                W-=items[i].weight
+            else:
+                val+=items[i].value
+                break
+        return val
