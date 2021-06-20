@@ -1,0 +1,32 @@
+
+class Solution:
+    
+    #Function to convert an infix expression to a postfix expression.
+    def InfixtoPostfix(self, exp):
+        stack=[]
+        operator={'^':2,'*':1,'/':1,'+':0,'-':0}
+        ans=''
+        def check(i):
+            try:
+                return operator[i]<=operator[stack[-1]]
+            except:
+                return False
+        for i in exp:
+            if i==')':
+                while stack and stack[-1]!='(':
+                    ans+=stack.pop(-1)
+                if stack:
+                    stack.pop(-1)
+            elif i=='(':
+                stack.append(i)
+            elif i.isalpha():
+                ans+=i
+            else:
+                while stack and check(i):
+                    ans+=stack.pop(-1)
+                stack.append(i)
+        while stack:
+            ans+=stack.pop(-1)
+        return ans
+                    
+                
