@@ -1,0 +1,15 @@
+
+class Solution:
+    def leftSmaller(self, n, a):
+        stack=[]
+        ans=[]
+        for i in a:
+            while stack and stack[-1]>=i:
+                stack.pop()
+            if stack==[]:
+                ans.append(-1)
+            else:
+                ans.append(stack[-1])
+            stack.append(i)
+        # print(ans)
+        return ans
