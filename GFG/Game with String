@@ -1,0 +1,18 @@
+from collections import Counter
+from heapq import heappop, heappush, heapify
+class Solution:
+    def minValue(self, s, k):
+        temp=Counter(s)
+        temp=temp.values()
+        temp=sorted(temp,reverse=True)
+        heap = []
+        ans=0
+        heapify(heap)
+        for i in temp:
+            heappush(heap, -1 * i)
+        for i in range(k):
+            heap[0]+=1
+            heapify(heap)
+        for i in heap:
+            ans+=i*i
+        return ans
