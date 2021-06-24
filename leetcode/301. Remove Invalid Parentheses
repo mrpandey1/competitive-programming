@@ -1,0 +1,47 @@
+class Solution(object):
+    def removeInvalidParentheses(self, s):
+        ans=set()
+        def getInvalid(s):
+            l,r=0,0
+            for i in s:
+                if i=='(':
+                    l+=1
+                elif i==')':
+                    if l>0:
+                        l-=1
+                    else:
+                        r+=1
+            return l,r
+        def isValid(s):
+            stack=[]
+            for i in s:
+                if i=='(':
+                    stack.append(i)
+                elif i==')':
+                    if stack and stack[-1]=='(':
+                        stack.pop()
+                    else:
+                        return False
+            if stack:
+                return False
+            return True
+        def helper(i,l,r,temp):
+            # print(i)
+            if i>=len(s) or (not l and not r):
+                if isValid(temp+s[i:]):
+                    ans.add(temp+s[i:])
+                return
+            if s[i]==')':
+                if r and (not temp or temp[-1]!=')'):
+                    helper(i+1,l,r-1,temp)
+                helper(i+1,l,r,temp+s[i])
+
+            elif s[i]=='(':
+                if not r and l and(not temp or temp[-1]!='('):
+                    helper(i+1,l-1,r,temp)
+                helper(i+1,l,r,temp+s[i])
+            else:
+                helper(i+1,l,r,temp+s[i])
+        l,r=getInvalid(s)
+        helper(0,l,r,'')
+        return list(ans)
