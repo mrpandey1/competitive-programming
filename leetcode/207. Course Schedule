@@ -1,0 +1,30 @@
+from collections import defaultdict
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        graph=defaultdict(list)
+        for i in range(len(prerequisites)):
+            graph[prerequisites[i][1]].append(prerequisites[i][0])
+            
+        def dfs(graph,curr,visited,stack):
+            # print(stack,visited)
+            visited[curr]=1
+            stack[curr]=1
+            for i in graph[curr]:
+                if not visited[i]:
+                    if dfs(graph,i,visited,stack):
+                        return True
+                elif stack[i]==1:
+                    return True
+            stack[curr]=0
+            return False
+
+        def isCycle(graph,n):
+            visited=[0]*n
+            stack=[0]*n
+            for i in range(n):
+                if visited[i]==0:
+                    if dfs(graph,i,visited,stack):
+                        return False
+            return True
+        # print(graph)
+        return isCycle(graph,numCourses)
