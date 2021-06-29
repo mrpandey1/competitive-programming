@@ -1,0 +1,21 @@
+from collections import defaultdict
+class Solution:
+    #Function to return list containing vertices in Topological order.
+    def topoSort(self, V, adj):
+        graph=defaultdict()
+        for i in range(V):
+            graph[i]=adj[i]
+        def dfs(graph,curr,visited,stack):
+            visited[curr]=True
+            for i in graph[curr]:
+                if visited[i]==False:
+                    dfs(graph,i,visited,stack)
+            stack.append(curr)
+        def sort(graph,n):
+            visited=[False]*n
+            stack=[]
+            for i in range(n):
+                if visited[i]==False:
+                    dfs(graph,i,visited,stack)
+            return stack[::-1]
+        return sort(graph,V)
