@@ -1,0 +1,27 @@
+from collections import defaultdict,deque
+class Solution:
+    def makeConnected(self, n: int, connections: List[List[int]]) -> int:
+        if len(connections)<n-1:
+            return -1
+        graph=defaultdict(list)
+        for u,v in connections:
+            graph[u].append(v)
+            graph[v].append(u)
+        seen=set()
+        count=0
+        sm=0
+        temp={}
+        for i in graph:
+            if i not in seen:
+                count+=1
+            else:
+                continue
+            queue=[i]
+            seen.add(i)
+            for k in queue:
+                for conn in graph[k]:
+                    if conn not in seen:
+                        queue.append(conn)
+                        seen.add(conn)
+            temp[i]=len(queue)
+        return n-sum(temp.values())+count-1
