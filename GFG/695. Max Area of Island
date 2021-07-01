@@ -1,0 +1,15 @@
+class Solution:
+    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
+        ans=0
+        def dfs(i,j):
+            if i>=0 and i<len(grid) and j>=0 and j<len(grid[0]) and grid[i][j]!=0:
+                grid[i][j]=0
+                a=1+(dfs(i+1,j)+dfs(i,j+1)+dfs(i-1,j)+dfs(i,j-1))
+                return a
+            else:
+                return 0
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j]==1:
+                    ans=max(ans,dfs(i,j))
+        return ans
