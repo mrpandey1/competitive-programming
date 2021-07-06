@@ -1,0 +1,17 @@
+class Solution:
+    def reorganizeString(self, s: str) -> str:
+        temp=collections.Counter(s)
+        temp=list(sorted(temp.items(),key=lambda x:-x[1]))
+        if temp[0][1]-1>sum(i[1] for i in temp[1:]):
+            return ""
+        # print(temp)
+        ans=[temp[0][0]]*temp[0][1]
+        index=0
+        for i in range(1,len(temp)):
+            for j in range(temp[i][1]):
+                ans[index%len(ans)]+=temp[i][0]
+                index+=1
+        # print(ans)
+        return ''.join(ans)
+        
+        
