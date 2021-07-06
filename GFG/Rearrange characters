@@ -1,0 +1,17 @@
+#User function Template for python3
+from collections import Counter
+class Solution :
+    def rearrangeString(self, s):
+        temp=Counter(s)
+        temp=list(sorted(temp.items(),key=lambda x:-x[1]))
+        if temp[0][1]-1>sum(i[1] for i in temp[1:]):
+            return "-1"
+        # print(temp)
+        ans=[temp[0][0]]*temp[0][1]
+        index=0
+        for i in range(1,len(temp)):
+            for j in range(temp[i][1]):
+                ans[index%len(ans)]+=temp[i][0]
+                index+=1
+        # print(ans)
+        return ''.join(ans)
