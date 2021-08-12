@@ -1,8 +1,28 @@
 class Solution:
     def findWords(self, words: List[str]) -> List[str]:
-        row1 = set("qwertyuiopQWERTYUIOP")
-        row2 = set("asdfghjklASDFGHJKL")
-        row3 = set("zxcvbnmZXCVBNM")
-        return [word for word in words if set(word)<=row1 or
-                                          set(word)<=row2 or
-                                          set(word)<=row3]
+        first = "QWERTYUIOPqwertyuiop";
+        second = "ASDFGHJKLasdfghjkl";
+        third = "ZXCVBNMzxcvbnm";
+        ans=[]
+        for i in words:
+            val=None
+            if len(i)==1:
+                ans.append(i)
+            if i[0].upper() in first:
+                pos=1
+            elif i[0].upper() in second:
+                pos=2
+            else:
+                pos=3
+            for j in i[1:]:
+                if j in first:
+                    val=1
+                elif j in second:
+                    val=2
+                elif j in third:
+                    val=3
+                if val!=pos:
+                    break
+            if val and val==pos:
+                ans.append(i)
+        return ans
