@@ -1,0 +1,40 @@
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def push(self,new_data):
+        new_node = Node(new_data)
+        new_node.next = self.head
+        self.head = new_node
+    
+    def print_ll(self):
+        temp = self.head
+        while(temp):
+            print(temp.data)
+            temp = temp.next
+    
+    def detect_cycle(self):
+        slow = self.head
+        fast = self.head
+        while(slow and fast and fast.next):
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return "Cycle Detected"
+        else:
+           return "not Detected"
+
+ll = LinkedList()
+ll.push(20)
+ll.push(4)
+ll.push(15)
+ll.push(10)
+ll.push(20)
+ll.push(80)
+ll.print_ll()
+print(ll.detect_cycle())
